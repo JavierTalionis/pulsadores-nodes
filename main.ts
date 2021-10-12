@@ -19,6 +19,7 @@ radio.onReceivedNumber(function (receivedNumber) {
                 Final = true
             }
         }
+        radio.sendValue("Node1", reply)
     }
 })
 input.onButtonPressed(Button.B, function () {
