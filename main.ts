@@ -20,6 +20,8 @@ radio.onReceivedNumber(function (receivedNumber) {
                 Final = true
             }
         }
+        // Turn on the led
+        pins.digitalWritePin(DigitalPin.P0, 0)
         radio.sendValue("Node1", reply)
     }
 })
@@ -29,12 +31,13 @@ input.onButtonPressed(Button.B, function () {
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     basic.showIcon(IconNames.Yes)
     timer = input.runningTime()
+    while (input.runningTime() - timer < 5000) {
+        basic.showNumber(0)
+    }
+    basic.showIcon(IconNames.No)
 })
 let reply = 0
 let Final = false
 let timer = 0
 radio.setGroup(1)
 let MyNode = 1
-basic.forever(function () {
-	
-})
